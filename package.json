@@ -21,11 +21,12 @@
   "homepage": "https://github.com/teamarmadillo/recursion-visualizer#readme",
   "dependencies": {
     "d3": "^5.11.0",
-    "espree": "^6.1.0",
+    "espree": "^6.1.1",
     "express": "^4.17.1",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "recast": "^0.18.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
