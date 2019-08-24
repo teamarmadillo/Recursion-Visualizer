@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/teamarmadillo/recursion-visualizer#readme",
   "dependencies": {
-    "d3": "^5.11.0",
+    "body-parser": "^1.19.0",
     "espree": "^6.1.0",
     "express": "^4.17.1",
     "node-sass": "^4.12.0",
