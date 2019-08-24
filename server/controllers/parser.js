@@ -13,9 +13,15 @@ parserController.parseArgsAndBaseCases = (req, res, next) => {
 };
 
 // deconstruct astArgs from res.locals
-// algorithm for created the tree of nodes
+// create the State used in our react application
+// save to res.locals.state
+parserController.createState = (req, res, next) => {
+  next();
+};
+
+// algorithm for creating the RCT
 // save resulting object of recursive calls to res.locals.recursiveCallTree
-parserController.convertToRecursiveCallTree = (req, res, next) => {
+parserController.convertToRecursiveCallsTree = (req, res, next) => {
   next();
 };
 

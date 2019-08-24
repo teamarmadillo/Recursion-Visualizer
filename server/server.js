@@ -24,10 +24,10 @@ app.post(
   urlencodedParser,
   parserController.convertToAST,
   parserController.parseArgsAndBaseCases,
-  parserController.convertToRecursiveCallTree,
+  parserController.createState,
+  parserController.convertToRecursiveCallsTree,
   (req, res) => {
-    // deconstruct recursiveCallTree from res.locals
-    // send tree back to client for front-end to parse
+    // send entire res.locals to client
   }
 );
 
