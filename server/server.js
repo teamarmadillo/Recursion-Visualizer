@@ -23,6 +23,7 @@ app.post(
   '/run',
   urlencodedParser,
   parserController.convertToAST,
+  parserController.parseArgsAndBaseCases,
   parserController.convertToRecursiveCallTree,
   (req, res) => {
     // deconstruct recursiveCallTree from res.locals
