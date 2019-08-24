@@ -6,7 +6,7 @@ const parserController = require('./controllers/parser');
 const PORT = 3000;
 
 // middleware for parsing body of request
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../index.html'));
