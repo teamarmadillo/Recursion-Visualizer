@@ -27,7 +27,8 @@ class Editor extends Component {
           <p>
             Please enter the recursive function you would like
             to see visualized, and then press Run. <br /><br />
-            To clear the form, press the Clear button.</p>
+            To clear the form, press the Clear button.
+          </p>
           <button type='button' id='clear'>Clear</button>
           <button type='button' id='run'>Run</button>
         </div>
