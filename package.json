@@ -25,6 +25,8 @@
     "express": "^4.17.1",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
+    "react-ace": "^7.0.2",
+    "react-ace-editor": "0.0.3",
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
