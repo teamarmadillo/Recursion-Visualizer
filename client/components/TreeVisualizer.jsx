@@ -9,6 +9,7 @@ class TreeVisualizer extends Component {
     return (
       <div id='tree-container'>
         <h3>Tree Visualizer</h3>
+        <div id='within-tree'></div>
       </div>
     );
   }

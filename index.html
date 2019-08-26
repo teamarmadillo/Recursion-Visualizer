@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link rel="stylesheet" href="./treant-js/Treant.css">
+    <link rel="stylesheet" href="./treant-js/examples/super-simple/super-simple.css">
   </head>
   <body>
     <div id="root"></div>
+    <script src="./treant-js/vendor/raphael.js"></script>
+    <script src="./treant-js/Treant.js"></script>
+    <script src="./recursion_related/treantConfigGen.js"></script>
+    <script src="./recursion_related/presetRecursionFuncs.js"></script>
     <script src="build/bundle.js"></script>
+    <script>
+      let val = RecursiveFuncs.factorialFunc(5);
+      let states = RecursiveFuncs.recursiveStates;
+      console.log(states);
+      let config = TreantConfig.TreantConfMaker(states, "#within-tree", 'factorialFunc')
+      console.log(config);
+      new Treant(config);
+    </script>
   </body>
 </html>
