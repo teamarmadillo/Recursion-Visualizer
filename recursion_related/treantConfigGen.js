@@ -73,4 +73,4 @@ TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString) => {
     }
 }
 
-module.exports = TreantConfig;
+// module.exports = TreantConfig;

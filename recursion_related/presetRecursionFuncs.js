@@ -137,14 +137,14 @@ const RecursiveFuncs = {
 //     else return n * Factorial(n - 1);
 // }
 
-const val = RecursiveFuncs.fibTree(3);
-// console.log(val);
-console.log(RecursiveFuncs.recursiveStates)
-let obj = TreantConfig.TreantConfMaker(RecursiveFuncs.recursiveStates);
-console.log(obj);
-// const sorted = RecursiveFuncs.recursiveStates.sort((a, b) => (a.parent > b.parent) ? 1:-1);
-// console.log(sorted);
-RecursiveFuncs.clearStatesArray();
+// const val = RecursiveFuncs.fibTree(3);
+// // console.log(val);
+// console.log(RecursiveFuncs.recursiveStates)
+// let obj = TreantConfig.TreantConfMaker(RecursiveFuncs.recursiveStates);
+// console.log(obj);
+// // const sorted = RecursiveFuncs.recursiveStates.sort((a, b) => (a.parent > b.parent) ? 1:-1);
+// // console.log(sorted);
+// RecursiveFuncs.clearStatesArray();
 
 // const otherVal = RecursiveFuncs.fibTail(7);
 // console.log(otherVal);
@@ -155,7 +155,3 @@ RecursiveFuncs.clearStatesArray();
 // console.log(RecursiveFuncs.factorialFunc(5));
 // console.log(RecursiveFuncs.recursiveStates);
 // RecursiveFuncs.clearStatesArray();
-
-
-
-module.exports = RecursiveFuncs;
