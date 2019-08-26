@@ -28,6 +28,7 @@ app.post(
   parserController.convertToRecursiveCallsTree,
   (req, res) => {
     // send entire res.locals to client
+    res.send(res.locals);
   }
 );
 
