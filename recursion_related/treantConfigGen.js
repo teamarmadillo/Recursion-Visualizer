@@ -1,6 +1,9 @@
 // Contains functions for generating a Treant config JSON object
 
-const TreantConfMaker = (recursiveCallbackObj, queryIDString) => {
+const TreantConfig = {};
+
+
+TreantConfig.TreantConfMaker = (recursiveCallbackObj, queryIDString) => {
     return {
         chart: {
             container: queryIDString,
@@ -11,7 +14,7 @@ const TreantConfMaker = (recursiveCallbackObj, queryIDString) => {
     }
 }
 
-const NodeStructMaker = (recursiveCallbackObj) => {
+TreantConfig.NodeStructMaker = (recursiveCallbackObj) => {
     let {recursiveCallback, value, baseCase} = recursiveCallbackObj;
     if (value === baseCase) {
         return {
@@ -30,3 +33,4 @@ const NodeStructMaker = (recursiveCallbackObj) => {
 }
 
 
+module.exports = TreantConfig;
