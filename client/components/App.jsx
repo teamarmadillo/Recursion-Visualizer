@@ -9,7 +9,9 @@ import '../styles/index.scss';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userInput : ''
+    };
   }
   render() {
     return (

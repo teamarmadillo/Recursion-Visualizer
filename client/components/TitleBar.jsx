@@ -10,7 +10,7 @@ class TitleBar extends Component {
       <div id='title-container'>
         <h1>Recursion Visualizer</h1>
           <p>
-            Enter a function or use one of our pre-loaded functions
+            Enter a function or use one of our pre-loaded ones
             to visualize a recursive function.  
           </p>
       </div>
