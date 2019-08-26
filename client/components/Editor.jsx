@@ -8,25 +8,8 @@ import { throws } from "assert";
 class Editor extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.runFunc = this.runFunc.bind(this);
-    this.clearForm = this.clearForm.bind(this);
   }
-
-  runFunc() {
-    let editor = ace.edit('ace-editor');
-    let userInput = editor.getSession().getValue();
-    this.setState(state=>({
-      userInput: String(userInput)
-    }));
-    editor.setValue('');
-  }
-
-  clearForm(){
-    let editor = ace.edit("ace-editor");
-    editor.setValue('');
-  }
-
+  
   render() {
     return (
       <div id='editor-container'>
@@ -39,8 +22,8 @@ class Editor extends Component {
             to see visualized, and then press Run. <br /><br />
             To clear the form, press the Clear button.
           </p>
-          <button type='button' id='clear' onClick={this.clearForm}>Clear</button>
-          <button type='button' id='run' onClick={this.runFunc}>Run</button>
+          <button type='button' id='clear' onClick={this.props.clearForm}>Clear</button>
+          <button type='button' id='run' onClick={this.props.runFunc}>Run</button>
         </div>
       </div>
     );
