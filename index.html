@@ -16,9 +16,11 @@
     <script src="./recursion_related/presetRecursionFuncs.js"></script>
     <script src="build/bundle.js"></script>
     <script>
-      let val = RecursiveFuncs.fibTree(5);
+      let val = RecursiveFuncs.factorialFunc(5);
       let states = RecursiveFuncs.recursiveStates;
-      let config = TreantConfig.TreantConfMaker(states, "#tree-container")
+      console.log(states);
+      let config = TreantConfig.TreantConfMaker(states, "#within-tree", 'factorialFunc')
+      console.log(config);
       new Treant(config);
     </script>
   </body>

@@ -5,7 +5,7 @@
 // const TreantConfig = require('./treantConfigGen');
 // import TreantConfig from './treantConfigGen.js';
 // const Treant = require('../treant-js-master/Treant');
-
+// const espree = require('espree');
 
 const RecursiveFuncs = {
 
@@ -44,16 +44,39 @@ const RecursiveFuncs = {
 
     // Fibonacci function (Tail recursion)
     fibTail(n, a=0, b=1, parent=null) {
-        this.recursiveStates.push({
-            func: this.fibTail,
-            arg: n,
-            value: b,
-            parent: parent,
-            pos: "Center",
-        }); 
-        if (n === 0) return a;
-        else if (n === 1) return b;
-        else return this.fibTail(n - 1, b, a+b, parent=n);
+        
+        console.log(this.recursiveStates);
+        if (n === 0) {
+            this.recursiveStates.push({
+                func: this.fibTail,
+                arg: n,
+                value: a,
+                parent: parent,
+                pos: "Center",
+            });
+            return a;
+        }
+        else if (n === 1) {
+            this.recursiveStates.push({
+                func: this.fibTail,
+                arg: n,
+                value: b,
+                parent: parent,
+                pos: "Center",
+            });
+            return b;
+        }
+        else {
+            const fibCall = this.fibTail(n - 1, b, a+b, parent=n);
+            this.recursiveStates.push({
+                func: this.fibTail,
+                arg: n,
+                value: fibCall,
+                parent: parent,
+                pos: "Center",
+            });
+            return fibCall;
+        }
     },
 
     // Factorial function (Tail recursion)
@@ -155,3 +178,14 @@ const RecursiveFuncs = {
 // console.log(RecursiveFuncs.factorialFunc(5));
 // console.log(RecursiveFuncs.recursiveStates);
 // RecursiveFuncs.clearStatesArray();
+
+const fib = [
+    "function fib(n) {",
+        "if (n <= 1) return n;",
+        "return fib(n - 1) + fib (n - 2);",
+    "}",
+    "fib(1432);"
+].join("\n");
+
+const ast = espree.parse(fib);
+console.log(ast.body[1].expression.arguments[0].value);

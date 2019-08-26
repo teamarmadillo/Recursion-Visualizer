@@ -19,27 +19,30 @@ TreantConfig.preOrderSplit = (recursiveCallbackArray) => {
 }
 
 
-TreantConfig.NodeStructMaker = (recursiveCallbackArray) => {
+TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
     let {func, value, arg, parent, pos} = recursiveCallbackArray[recursiveCallbackArray.length - 1];
-    if (value == arg) {
+    if (value == arg && recursiveCallbackArray.length === 1) {
         return {
             text: {
-                name: `fibTree`,
-                title: `fibTree(${arg})`,
-                desc: `Result = ${value}, Parent = ${parent}`,
+                // name: `fibTree`,
+                title: `${nameFunc}(${arg})`,
+                desc: `Result = ${value}`
+                // , Parent = ${parent}`,
             }
         }
     }
     else {
-        if (pos === "Center") {
+        if (pos == "Center") {
+            recursiveCallbackArray.pop();
             return {
                 text: {
-                    name: `fibTree`,
-                    title: `fibTree(${arg})`,
-                    desc: `Result = ${value}, Parent = ${parent}`
+                    // name: `fibTree`,
+                    title: `${nameFunc}(${arg})`,
+                    desc: `Result = ${value}`
+                    // , Parent = ${parent}`
                 },
                 children: [
-                    TreantConfig.NodeStructMaker(recursiveCallbackArray),
+                    TreantConfig.NodeStructMaker(recursiveCallbackArray, nameFunc),
                 ]
             }
         }
@@ -47,13 +50,14 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray) => {
             const LRArr = TreantConfig.preOrderSplit(recursiveCallbackArray);
             return {
                 text: {
-                    name: `fibTree`,
-                    title: `fibTree(${arg})`,
-                    desc: `Result = ${value}, Parent = ${parent}`,
+                    // name: `fibTree`,
+                    title: `${nameFunc}(${arg})`,
+                    desc: `Result = ${value}`
+                    // , Parent = ${parent}`,
                 },
                 children: [
-                    TreantConfig.NodeStructMaker(LRArr[0]),
-                    TreantConfig.NodeStructMaker(LRArr[1])
+                    TreantConfig.NodeStructMaker(LRArr[0], nameFunc),
+                    TreantConfig.NodeStructMaker(LRArr[1], nameFunc)
                 ]
             }
         }
@@ -62,14 +66,14 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray) => {
 }
 
 
-TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString) => {
+TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString, name) => {
     return {
         chart: {
             container: queryIDString,
             connectors: {type: "bCurve"},
             node: {collapsable: true},
         },
-        nodeStructure: TreantConfig.NodeStructMaker(recursiveCallbackArray),
+        nodeStructure: TreantConfig.NodeStructMaker(recursiveCallbackArray, name),
     }
 }
 
