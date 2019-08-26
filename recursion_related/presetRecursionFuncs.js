@@ -8,6 +8,7 @@ const RecursiveFuncs = {
     // recursive call of one of the function
     stack: [],
 
+    // Function for clearing the stack
     clearStack() {
         this.stack = [];
     },
