@@ -3,22 +3,26 @@
 const TreantConfig = {};
 
 
-TreantConfig.TreantConfMaker = (recursiveCallbackObj, queryIDString) => {
+TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString) => {
     return {
         chart: {
             container: queryIDString,
             connectors: {type: "bCurve"},
             node: {collapsable: true},
         },
-        nodeStructure: NodeStructMaker(recursiveCallbackObj),
+        nodeStructure: NodeStructMaker(recursiveCallbackArray),
     }
 }
 
-TreantConfig.NodeStructMaker = (recursiveCallbackObj) => {
-    let {recursiveCallback, value, baseCase} = recursiveCallbackObj;
-    if (value === baseCase) {
+TreantConfig.NodeStructMaker = (recursiveCallbackArray) => {
+    let {func, value, arg, parent, pos} = recursiveCallbackArray.pop();
+    if (value == arg) {
         return {
-            text: { name: `${recursiveCallback}(${value})`}
+            text: {
+                name: `${func}`,
+                title: `${func}(${arg})`,
+                desc: `Result = ${value}\nParent = ${parent}`,
+            }
         }
     }
     else {

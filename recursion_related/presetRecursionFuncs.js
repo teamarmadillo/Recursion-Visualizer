@@ -6,35 +6,74 @@ const RecursiveFuncs = {
 
     // Stack for storing state at each
     // recursive call of one of the function
-    stack: [],
+    recursiveStates: [],
 
     // Function for clearing the stack
-    clearStack() {
-        this.stack = [];
+    clearStatesArray() {
+        this.recursiveStates = [];
+        console.log("Recursive States array is now empty");
     },
 
     // Fibonacci function (Tree recursion)
     fibTree(n, leftOrRight="Root", parent=null) {
-        this.stack.push({
+        if (n <= 1) {
+            this.recursiveStates.push({
+                func: this.fibTree,
+                arg: n,
+                value: n,
+                parent: parent,
+                pos: leftOrRight
+            });
+            return n;
+        }
+        const val = this.fibTree(n - 1, `Left`, n) + this.fibTree(n - 2, `Right`, n);
+        this.recursiveStates.push({
             func: this.fibTree,
             arg: n,
+            value: val,
             parent: parent,
-            LR: leftOrRight
+            pos: leftOrRight
         });
-        if (n <= 1) return n;
-        return this.fibTree(n - 1, `Left`, n) + this.fibTree(n - 2, `Right`, n);
+        return val;
     },
 
     // Fibonacci function (Tail recursion)
     fibTail(n, a=0, b=1, parent=null) {
-        this.stack.push({
+        this.recursiveStates.push({
             func: this.fibTail,
-            value: b,
             arg: n,
+            value: b,
             parent: parent,
+            pos: "Center",
         }); 
-        if (n <= 1) return n;
-        return this.fibTail(n - 1, b, a+b);
+        if (n === 0) return a;
+        else if (n === 1) return b;
+        else return this.fibTail(n - 1, b, a+b, parent=n);
+    },
+
+    // Factorial function (Tail recursion)
+    factorialFunc(n, parent=null) {
+        if (n < 1) return undefined;
+
+        if (n === 1) {
+            this.recursiveStates.push({
+                func: this.factorialFunc,
+                arg: n,
+                value: n,
+                parent: parent,
+                pos: "Center",
+            })
+            return n;
+        }
+        const val = n * this.factorialFunc(n - 1, n);
+        this.recursiveStates.push({
+            func: this.factorialFunc,
+            arg: n,
+            value: val,
+            parent: parent,
+            pos: "Center",
+        })
+        return val;
     }
 
 }
@@ -92,6 +131,22 @@ const Factorial = (n) => {
     if (n === 1) return n;
     else return n * Factorial(n - 1);
 }
+
+// const val = RecursiveFuncs.fibTree(7);
+// console.log(val);
+// console.log(RecursiveFuncs.recursiveStates)
+// RecursiveFuncs.clearStatesArray();
+
+// const otherVal = RecursiveFuncs.fibTail(7);
+// console.log(otherVal);
+// console.log(RecursiveFuncs.recursiveStates)
+// RecursiveFuncs.clearStatesArray();
+
+// const anotherVal = RecursiveFuncs.factorialFunc(5);
+console.log(RecursiveFuncs.factorialFunc(5));
+console.log(RecursiveFuncs.recursiveStates);
+RecursiveFuncs.clearStatesArray();
+
 
 
 module.exports = RecursiveFuncs;
