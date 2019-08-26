@@ -1,5 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
+import TitleBar from './TitleBar.jsx';
+import CallStackVisualizer from './CallStackVisualizer.jsx';
+import TreeVisualizer from './TreeVisualizer.jsx';
+import Editor from './Editor.jsx';
+import '../styles/index.scss';
 
 class App extends Component {
   constructor(props) {
@@ -7,7 +12,14 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <h2>Hello World</h2>;
+    return (
+      <div id='container'>
+        <TitleBar />
+        <CallStackVisualizer />
+        <TreeVisualizer />
+        <Editor />
+      </div>
+    )
   }
 }
 
