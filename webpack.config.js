@@ -32,7 +32,7 @@ module.exports = {
     port: 8080,
     proxy: {
       // add routes to send to server here
-      // '/start': 'http://localhost:3000',
+      '/run': 'http://localhost:3000'
     }
   }
 };

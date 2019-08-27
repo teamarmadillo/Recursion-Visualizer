@@ -6,7 +6,6 @@ import TreeVisualizer from './TreeVisualizer.jsx';
 import Editor from './Editor.jsx';
 import '../styles/index.scss';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,18 +22,22 @@ class App extends Component {
     let userInput = editor.getSession().getValue();
     userInput = String(userInput);
     //Sanitizes data
-    if (userInput[userInput.length-1] === 'X') userInput = userInput.slice(0,-50);
-    if (userInput[0] !== 'f') userInput = userInput.slice(userInput.indexOf('f'));
+    if (userInput[userInput.length - 1] === 'X')
+      userInput = userInput.slice(0, -50);
+    if (userInput[0] !== 'f')
+      userInput = userInput.slice(userInput.indexOf('f'));
     //Updates state with userInput
+    console.log(userInput);
     this.setState({ userInput: userInput });
-    fetch('/api', {
-      headers: {'content-type': 'application/json'},
+    fetch('/run', {
+      headers: { 'Content-type': 'application/json' },
       method: 'POST',
-      body: JSON.stringify({ userInput }) 
-    }).then(response => response.json())
-      .then(response => console.log(response))
-    //Clears form  
-    editor.setValue('');  
+      body: JSON.stringify({ userInput })
+    })
+      .then(response => response.json())
+      .then(response => console.log(response));
+    //Clears form
+    editor.setValue('');
   }
 
   render() {
@@ -43,9 +46,9 @@ class App extends Component {
         <TitleBar />
         <CallStackVisualizer />
         <TreeVisualizer />
-        <Editor runFunc = {this.runFunc}/>
+        <Editor runFunc={this.runFunc} />
       </div>
-    )
+    );
   }
 }
 
