@@ -20,14 +20,12 @@ TreantConfig.preOrderSplit = (recursiveCallbackArray) => {
 
 
 TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
-    let {func, value, arg, parent, pos} = recursiveCallbackArray[recursiveCallbackArray.length - 1];
+    let {value, arg, pos} = recursiveCallbackArray[recursiveCallbackArray.length - 1];
     if (value == arg && recursiveCallbackArray.length === 1) {
         return {
             text: {
-                // name: `fibTree`,
                 title: `${nameFunc}(${arg})`,
                 desc: `Result = ${value}`
-                // , Parent = ${parent}`,
             }
         }
     }
@@ -36,10 +34,8 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
             recursiveCallbackArray.pop();
             return {
                 text: {
-                    // name: `fibTree`,
                     title: `${nameFunc}(${arg})`,
                     desc: `Result = ${value}`
-                    // , Parent = ${parent}`
                 },
                 children: [
                     TreantConfig.NodeStructMaker(recursiveCallbackArray, nameFunc),
@@ -50,10 +46,8 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
             const LRArr = TreantConfig.preOrderSplit(recursiveCallbackArray);
             return {
                 text: {
-                    // name: `fibTree`,
                     title: `${nameFunc}(${arg})`,
                     desc: `Result = ${value}`
-                    // , Parent = ${parent}`,
                 },
                 children: [
                     TreantConfig.NodeStructMaker(LRArr[0], nameFunc),
@@ -76,5 +70,3 @@ TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString, name) => 
         nodeStructure: TreantConfig.NodeStructMaker(recursiveCallbackArray, name),
     }
 }
-
-// module.exports = TreantConfig;

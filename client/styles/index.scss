@@ -13,10 +13,11 @@ body{
 }
 
 #title-container{
+    height: 100%;
     grid-column-start: 1;
     grid-column-end: span 10;
     grid-row-start: 1;
-    grid-row-end: span 3;
+    grid-row-end: span 2;
 
     h1{
       text-align: center;
@@ -31,8 +32,8 @@ body{
   #stack-container{
     grid-column-start: 1;
     grid-column-end: span 4;
-    grid-row-start: 4;
-    grid-row-end: span 11;
+    grid-row-start: 2;
+    grid-row-end: span 13;
     border: 1px solid black;
     overflow-y: auto;
     h3{
@@ -44,8 +45,8 @@ body{
 #tree-container{
   grid-column-start: 5;
   grid-column-end: span 6;
-  grid-row-start: 4;
-  grid-row-end: span 11;
+  grid-row-start: 2;
+  grid-row-end: span 13;
   border: 1px solid black;
   overflow-y: auto;
   h3{
