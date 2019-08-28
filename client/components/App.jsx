@@ -20,14 +20,23 @@ class App extends Component {
     //Function clears AceEditor form on click of the Clear Button
     let editor = ace.edit('ace-editor');
     let userInput = editor.getSession().getValue();
-    userInput = String(userInput);
+    userInput = String(userInput); // seems that we are getting the user's input and converting it into a string
+    // =========
+    /*
+    the code commented below ('sanitizes data') => right now, Ace-Editor is sending back 50 Xs, and also includes the line numbers.
+    need to figure out a way to clean this up. Also, in runFunc above, ace.edit() <--- what even is that?
+    need to clean this logic and get it to accept user input in a tighter fashion. Possibly swap out for a different text editor?
+    if this isn't working by lunch, lets pivot and use a different code editor. 
+    NOTE: the following link has some sort of documentation RE ace.edit :: https://ace.c9.io/#nav=api&api=ace
+    
+    */
+    // =========
     //Sanitizes data
-    if (userInput[userInput.length - 1] === 'X')
-      userInput = userInput.slice(0, -50);
-    if (userInput[0] !== 'f')
-      userInput = userInput.slice(userInput.indexOf('f'));
+    // if (userInput[userInput.length - 1] === 'X') // 
+      // userInput = userInput.slice(0, -50);
+    // if (userInput[0] !== 'f')
+      // userInput = userInput.slice(userInput.indexOf('f'));
     //Updates state with userInput
-    console.log(userInput);
     this.setState({ userInput: userInput });
     fetch('/run', {
       headers: { 'Content-type': 'application/json' },
