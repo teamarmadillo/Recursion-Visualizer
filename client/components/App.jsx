@@ -1,17 +1,19 @@
 import React from 'react';
+import render from 'react-dom';
 import { Component } from 'react';
 import TitleBar from './TitleBar.jsx';
 import CallStackVisualizer from './CallStackVisualizer.jsx';
 import TreeVisualizer from './TreeVisualizer.jsx';
 import Editor from './Editor.jsx';
 import '../styles/index.scss';
+// import GarethTree from './GarethTree.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userInput: '',
-      stateFromServer: {}
+      stateFromServer: {},
     };
     this.runFunc = this.runFunc.bind(this);
   }
@@ -54,7 +56,11 @@ class App extends Component {
       body: JSON.stringify({ userInput })
     })
       .then(response => response.json())
-      .then(response => console.log(response))
+      .then((response) => {
+        const newState = JSON.parse(JSON.stringify(App.state));
+        newState.stateFromServer = response;
+        console.log(newState);
+      })
       .catch(error=>console.log(error));
     //Clears form
     editor.setValue('');
@@ -63,6 +69,7 @@ class App extends Component {
   render() {
     return (
       <div id='container'>
+        <p>HELLO WORLD APP.JSX</p>
         <TitleBar />
         <CallStackVisualizer />
         <TreeVisualizer />
@@ -70,6 +77,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 
 export default App;

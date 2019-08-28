@@ -4,6 +4,12 @@ body{
   justify-content: center;
 }
 
+.treeVisualizer{
+  height: 400px;
+  width: 400px;
+  background-color: black;
+}
+
 #container{
   display: grid;
   grid-template-columns: repeat(10, 10%);

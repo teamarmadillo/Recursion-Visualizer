@@ -21,7 +21,7 @@ TreantConfig.preOrderSplit = (recursiveCallbackArray) => {
 
 TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
     let {value, arg, pos} = recursiveCallbackArray[recursiveCallbackArray.length - 1];
-    if (value == arg && recursiveCallbackArray.length === 1) {
+    if (value === arg && recursiveCallbackArray.length === 1) {
         return {
             text: {
                 title: `${nameFunc}(${arg})`,
@@ -30,7 +30,7 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
         }
     }
     else {
-        if (pos == "Center") {
+        if (pos === "Center") {
             recursiveCallbackArray.pop();
             return {
                 text: {
@@ -57,7 +57,7 @@ TreantConfig.NodeStructMaker = (recursiveCallbackArray, nameFunc) => {
         }
         
     }
-}
+};
 
 
 TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString, name) => {
@@ -68,5 +68,7 @@ TreantConfig.TreantConfMaker = (recursiveCallbackArray, queryIDString, name) => 
             node: {collapsable: true},
         },
         nodeStructure: TreantConfig.NodeStructMaker(recursiveCallbackArray, name),
-    }
-}
+    };
+};
+
+
