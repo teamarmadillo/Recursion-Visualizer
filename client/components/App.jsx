@@ -28,14 +28,24 @@ class App extends Component {
     need to clean this logic and get it to accept user input in a tighter fashion. Possibly swap out for a different text editor?
     if this isn't working by lunch, lets pivot and use a different code editor. 
     NOTE: the following link has some sort of documentation RE ace.edit :: https://ace.c9.io/#nav=api&api=ace
-    
+
     */
-    // =========
-    //Sanitizes data
-    // if (userInput[userInput.length - 1] === 'X') // 
-      // userInput = userInput.slice(0, -50);
-    // if (userInput[0] !== 'f')
-      // userInput = userInput.slice(userInput.indexOf('f'));
+    //Sanitizes data || without this code, Ace Editor returns a string that 
+    // includes the line number, and sometimes 50 trailing X's
+    if (userInput[userInput.length - 1] === 'X') // 
+      userInput = userInput.slice(0, -50);
+    if (userInput[0] !== 'f' || userInput[0] !== '('){
+        for (let i = 0; i < userInput.length; i += 1){
+          if (userInput[i] === 'f' || userInput[i] === '('){
+            // NOTE: if the user utilizes a function expression (e.g. const flip = function ...)
+            // if the name of their variable begins with an f, this will be triggered. So it doesn't account for all edge cases.
+            userInput = userInput.slice(i);
+            console.log('userInput, sanitized : ', userInput);
+            break;
+          }
+        }
+      }
+
     //Updates state with userInput
     this.setState({ userInput: userInput });
     fetch('/run', {
@@ -44,7 +54,8 @@ class App extends Component {
       body: JSON.stringify({ userInput })
     })
       .then(response => response.json())
-      .then(response => console.log(response));
+      .then(response => console.log(response))
+      .catch(error=>console.log(error));
     //Clears form
     editor.setValue('');
   }
