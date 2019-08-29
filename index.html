@@ -2,29 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./treant-js/Treant.css">
-    <link rel="stylesheet" href="./treant-js/examples/super-simple/super-simple.css">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+    <title>Recursify</title>
+    <!-- <link rel="stylesheet" href="./treant-js/Treant.css">
+    <link rel="stylesheet" href="./treant-js/examples/super-simple/super-simple.css"> -->
+    
   </head>
   <body>
-    <div id="root"></div>
-    <script src="./treant-js/vendor/raphael.js"></script>
-    <script src="./treant-js/Treant.js"></script>
-    <script src="./recursion_related/treantConfigGen.js"></script>
-    <script src="./recursion_related/presetRecursionFuncs.js"></script>
+    <div id='root'></div>
     <script src="build/bundle.js"></script>
-    <script>
-      // let val = RecursiveFuncs.factorialFunc(10);
-      // let states = RecursiveFuncs.recursiveStates;
-      // let config = TreantConfig.TreantConfMaker(states, "#within-tree", 'factorialFunc');
-      // new Treant(config);
-      // RecursiveFuncs.clearStatesArray();
-      val = RecursiveFuncs.fibTree(5);
-      states = RecursiveFuncs.recursiveStates;
-      config = TreantConfig.TreantConfMaker(states, '#within-tree', 'fibTree');
-      new Treant(config);
-    </script>
   </body>
 </html>
