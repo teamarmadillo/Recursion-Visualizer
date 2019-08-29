@@ -8,14 +8,10 @@ class Editor extends Component {
   constructor(props) {
     super(props);
     this.clearForm = this.clearForm.bind(this);
-    this.runFunc = this.clearForm.bind(this);
   }
+  
   clearForm() {
     //Function clears AceEditor form on click of the Clear Button
-    this.clearForm = this.clearForm.bind(this);
-  }
-
-  clearForm() {
     let editor = ace.edit("ace-editor");
     editor.setValue('');
   }
@@ -31,8 +27,8 @@ class Editor extends Component {
             Please enter the recursive function you would like
             to see visualized, and then press Run. <br /><br />
             To clear the form, press the Clear button.</p>
-          <button type='button' id='clear' onClick={this.clearForm}>Clear</button>
-          <button type='button' id='run' onClick={this.props.runFunc}>Run</button>
+          <button type='button' id='clear' onClick={()=>{this.clearForm();}}>Clear</button>
+          <button type='button' id='run' onClick={()=>{this.props.runFunc();}}>Run</button>
         </div>
       </div>
     );
