@@ -25,10 +25,10 @@ class Editor extends Component {
         <div id='button-container'>
           <p>
             Please enter the recursive function you would like
-            to see visualized, and then press Run. <br /><br />
-            To clear the form, press the Clear button.</p>
-          <button type='button' id='clear' onClick={()=>{this.clearForm();}}>Clear</button>
+            to see visualized. <br /><br />
+            To clear the form, press the clear button.</p>
           <button type='button' id='run' onClick={()=>{this.props.runFunc();}}>Run</button>
+          <button type='button' id='clear' onClick={()=>{this.clearForm();}}>Clear</button>
         </div>
       </div>
     );
