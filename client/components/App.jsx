@@ -1,6 +1,4 @@
-import React from 'react';
-import render from 'react-dom';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import TitleBar from './TitleBar.jsx';
 import CallStackVisualizer from './CallStackVisualizer.jsx';
 import TreeVisualizer from './TreeVisualizer.jsx';
@@ -17,23 +15,24 @@ class App extends Component {
     };
     this.runFunc = this.runFunc.bind(this);
   }
-
+// THE FOLLOWING CODE BLOCK IS NECESSARY. THIS IS COMMENTED OUT FOR TESTING PURPOSES.
+// =====
   runFunc() {
     //Function clears AceEditor form on click of the Clear Button
     let editor = ace.edit('ace-editor');
     let userInput = editor.getSession().getValue();
     userInput = String(userInput); // seems that we are getting the user's input and converting it into a string
-    // =========
-    /*
-    the code commented below ('sanitizes data') => right now, Ace-Editor is sending back 50 Xs, and also includes the line numbers.
-    need to figure out a way to clean this up. Also, in runFunc above, ace.edit() <--- what even is that?
-    need to clean this logic and get it to accept user input in a tighter fashion. Possibly swap out for a different text editor?
-    if this isn't working by lunch, lets pivot and use a different code editor. 
-    NOTE: the following link has some sort of documentation RE ace.edit :: https://ace.c9.io/#nav=api&api=ace
+//     // =========
+//     /*
+//     the code commented below ('sanitizes data') => right now, Ace-Editor is sending back 50 Xs, and also includes the line numbers.
+//     need to figure out a way to clean this up. Also, in runFunc above, ace.edit() <--- what even is that?
+//     need to clean this logic and get it to accept user input in a tighter fashion. Possibly swap out for a different text editor?
+//     if this isn't working by lunch, lets pivot and use a different code editor. 
+//     NOTE: the following link has some sort of documentation RE ace.edit :: https://ace.c9.io/#nav=api&api=ace
 
-    */
-    //Sanitizes data || without this code, Ace Editor returns a string that 
-    // includes the line number, and sometimes 50 trailing X's
+//     */
+//     //Sanitizes data || without this code, Ace Editor returns a string that 
+//     // includes the line number, and sometimes 50 trailing X's
     if (userInput[userInput.length - 1] === 'X') // 
       userInput = userInput.slice(0, -50);
     if (userInput[0] !== 'f' || userInput[0] !== '('){
@@ -48,7 +47,7 @@ class App extends Component {
         }
       }
 
-    //Updates state with userInput
+//     //Updates state with userInput
     this.setState({ userInput: userInput });
     fetch('/run', {
       headers: { 'Content-type': 'application/json' },
@@ -66,15 +65,17 @@ class App extends Component {
     editor.setValue('');
   }
 
-  render() {
-    return (
-      <div id='container'>
-        <p>HELLO WORLD APP.JSX</p>
-        <TitleBar />
-        <CallStackVisualizer />
-        <TreeVisualizer />
-        <Editor runFunc={this.runFunc} />
-      </div>
+//   NOTE: in the render method, the highest level div initially had the following id:    id='container'
+  
+
+// ============
+render() {
+  return (
+    <div id={'container'}> 
+      <TitleBar />
+      <TreeVisualizer data={this.state.stateFromServer}/>
+      <Editor runFunc={this.runFunc} />
+    </div>
     );
   }
 
