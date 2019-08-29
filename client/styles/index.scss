@@ -1,107 +1,102 @@
-body{
+body {
   display: flex;
   align-content: center;
   justify-content: center;
 }
 
-.treeVisualizer{
+.treeVisualizer {
   height: 400px;
   width: 400px;
   background-color: black;
 }
 
-#container{
+#container {
   display: grid;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(20, 5%);
   min-height: 700px;
-  max-width: 800px;
+  min-width: 80vw;
 }
 
-#title-container{
-    height: 100%;
-    grid-column-start: 1;
-    grid-column-end: span 10;
-    grid-row-start: 1;
-    grid-row-end: span 2;
+#title-container {
+  height: 100%;
+  grid-column-start: 1;
+  grid-column-end: span 10;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 
-    h1{
-      text-align: center;
-      font-size: 20px;
-    }
-
-    p{
-      text-align: center;
-    }
+  h1 {
+    text-align: center;
+    font-size: 20px;
   }
 
-  #stack-container{
-    grid-column-start: 1;
-    grid-column-end: span 4;
-    grid-row-start: 2;
-    grid-row-end: span 13;
-    border: 1px solid black;
-    overflow-y: auto;
-    h3{
-      margin-left: 5%;
-      font-size: 16px;
-    }
+  p {
+    text-align: center;
   }
+}
 
-#tree-container{
-  grid-column-start: 5;
-  grid-column-end: span 6;
+#stack-container {
+  grid-column-start: 1;
+  grid-column-end: span 2;
   grid-row-start: 2;
   grid-row-end: span 13;
   border: 1px solid black;
   overflow-y: auto;
-  h3{
+  h3 {
     margin-left: 5%;
     font-size: 16px;
   }
 }
 
-#editor-container{
+#tree-container {
+  grid-column-start: 3;
+  grid-column-end: span 8;
+  grid-row-start: 2;
+  grid-row-end: span 13;
+  border: 1px solid black;
+  overflow-y: auto;
+  h3 {
+    margin-left: 5%;
+    font-size: 16px;
+  }
+}
+
+#editor-container {
   grid-column-start: 1;
   grid-column-end: span 10;
   grid-row-start: 15;
   grid-row-end: span 6;
   border: 1px solid black;
 
-  #ace-editor{
+  #ace-editor {
     width: 60%;
     height: 100%;
     overflow: auto;
     float: left;
   }
 
-  #button-container{
+  #button-container {
     width: 40%;
     float: right;
 
-    p{
+    p {
       margin: 10% 5% 10% 5%;
     }
 
-    button{
+    button {
       font-size: 14px;
       font-weight: 700;
       padding: 10px;
       border-radius: 3px;
     }
 
-    #run{
-      float:right;
-      margin-right: 5%
+    #run {
+      float: right;
+      margin-right: 5%;
     }
-    #clear{
+    #clear {
       float: left;
       margin-left: 5%;
     }
   }
 }
-
-
-
-
-
