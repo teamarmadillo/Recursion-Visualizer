@@ -18,37 +18,27 @@ ReactTreeConfig.preOrderSplit = (recursiveCallbackArray, numCalls) => {
 
 
 ReactTreeConfig.NodeStructMaker = (recursiveCallbackArray, numCalls) => {
-    let {name, result, arg, pos} = recursiveCallbackArray[0];
+    let {name, result, arg} = recursiveCallbackArray[0];
     if (result == arg && recursiveCallbackArray.length === 1) {
         return {
             "name": `${name}(${arg}) Result = ${result}`
         }
     }
     else {
-        if (pos == "Center") {
-            recursiveCallbackArray.pop();
-            return {
-                "name": `${name}(${arg}) Result = ${result}`,
-                "children": [
-                    ReactTreeConfig.NodeStructMaker(recursiveCallbackArray, numCalls),
-                ]
-            }
+        const splitArray = ReactTreeConfig.preOrderSplit(recursiveCallbackArray, numCalls);
+        let childrenArray =[];
+        for (let i = 0; i < numCalls; i++) {
+            childrenArray.push(ReactTreeConfig.NodeStructMaker(splitArray[i], numCalls))
         }
-        else {
-            const splitArray = ReactTreeConfig.preOrderSplit(recursiveCallbackArray, numCalls);
-            let childrenArray =[];
-            for (let i = 0; i < numCalls; i++) {
-                childrenArray.push(ReactTreeConfig.NodeStructMaker(splitArray[i], numCalls))
-            }
 
-            return {
-                "name": `${name}(${arg}) Result = ${result}`,
-                "children": [...childrenArray]
-            }
+        return {
+            "name": `${name}(${arg}) Result = ${result}`,
+            "children": [...childrenArray]
         }
-        
     }
+        
 }
+
 
 
 // let testArr = [ 
@@ -62,5 +52,24 @@ ReactTreeConfig.NodeStructMaker = (recursiveCallbackArray, numCalls) => {
 // let testObj = ReactTreeConfig.NodeStructMaker(testArr, 2);
 // console.log(testObj);
 // fs.writeFileSync('./testReactTreeObj', JSON.stringify(testObj));
+
+// let testArr = [
+//         { name: 'factorial', parent: null, arg: 4, result: 55296 },
+//         { name: 'factorial', parent: 4, arg: 3, result: 24 },
+//         { name: 'factorial', parent: 3, arg: 2, result: 2 },
+//         { name: 'factorial', parent: 2, arg: 1, result: 1 },
+//         { name: 'factorial', parent: 2, arg: 0, result: 0 },
+//         { name: 'factorial', parent: 2, arg: -1, result: -1 },
+//         { name: 'factorial', parent: 3, arg: 1, result: 1 },
+//         { name: 'factorial', parent: 3, arg: 0, result: 0 },
+//         { name: 'factorial', parent: 4, arg: 2, result: 2 },
+//         { name: 'factorial', parent: 2, arg: 1, result: 1 },
+//         { name: 'factorial', parent: 2, arg: 0, result: 0 },
+//         { name: 'factorial', parent: 2, arg: -1, result: -1 },
+//         { name: 'factorial', parent: 4, arg: 1, result: 1 }
+// ];
+
+// let testObj = ReactTreeConfig.NodeStructMaker(testArr, 3);
+// fs.writeFileSync('./testReactConf.json', JSON.stringify(testObj));
 
 module.exports = ReactTreeConfig;

@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.post('/run', (req, res) => {
   console.log('from server, req body: ', req.body);
-  res.send('/run is hit');
+  res.json({hi: 'meh'});
 });
 
 app.listen(PORT, () => {

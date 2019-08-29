@@ -24,6 +24,10 @@ const MakeStates = {
             this.update({name, recursiveFunc, arg: arg - i, baseCase, numCalls}, arg)
         }
         return;
+    },
+
+    clearStates: function() {
+        this.recursiveStates = [];
     }
 }
 

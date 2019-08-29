@@ -26,7 +26,7 @@ parserController.parseArgsAndBaseCases = (req, res, next) => {
   const bcArr = [];
   for (let i = 0; i <= bc; i++) { bcArr.push(i); }
 
-  const funcCalls = AST.body[0].body.body[0].alternate.argument
+  const funcCalls = AST.body[0].body.body[0].alternate
   
   const func = new Function(`return(${res.locals.stringFunc})`);
 
@@ -44,7 +44,9 @@ parserController.parseArgsAndBaseCases = (req, res, next) => {
 // create the State used in our react application
 // save to res.locals.state
 parserController.createState = (req, res, next) => {
-  res.locals.recursiveStates = MakeStates.update(res.locals.funcObj);
+  MakeStates.update(res.locals.funcObj);
+  res.locals.recursiveStates = MakeStates.recursiveStates;
+  MakeStates.clearStates();
   next();
 };
 

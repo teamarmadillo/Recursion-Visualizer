@@ -35,7 +35,8 @@ class App extends Component {
       body: JSON.stringify({ userInput })
     })
       .then(response => response.json())
-      .then(response => console.log(response));
+      .then(response => console.log(response))
+      .catch(e => console.log(e));
     //Clears form
     editor.setValue('');
   }
