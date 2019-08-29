@@ -73,6 +73,7 @@ class App extends Component {
     return (
       <div id={'container'}>
         <TitleBar />
+        <CallStackVisualizer />
         <TreeVisualizer data={this.state.stateFromServer} />
         <Editor runFunc={this.runFunc} />
       </div>
