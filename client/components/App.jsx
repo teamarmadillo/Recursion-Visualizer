@@ -4,7 +4,6 @@ import CallStackVisualizer from './CallStackVisualizer.jsx';
 import TreeVisualizer from './TreeVisualizer.jsx';
 import Editor from './Editor.jsx';
 import '../styles/index.scss';
-// import GarethTree from './GarethTree.jsx';
 
 class App extends Component {
   constructor(props) {
