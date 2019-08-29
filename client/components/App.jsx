@@ -11,12 +11,13 @@ class App extends Component {
     super(props);
     this.state = {
       treeData: {},
+      // to test mock state, uncomment objs
       callStackData: [
-        { name: 'fib', parent: null, arg: 3, result: 2 },
-        { name: 'fib', parent: 3, arg: 2, result: 1 },
-        { name: 'fib', parent: 2, arg: 1, result: 1 },
-        { name: 'fib', parent: 2, arg: 0, result: 0 },
-        { name: 'fib', parent: 3, arg: 1, result: 1 }
+        // { name: 'fib', parent: null, arg: 3, result: 2 },
+        // { name: 'fib', parent: 3, arg: 2, result: 1 },
+        // { name: 'fib', parent: 2, arg: 1, result: 1 },
+        // { name: 'fib', parent: 2, arg: 0, result: 0 },
+        // { name: 'fib', parent: 3, arg: 1, result: 1 }
       ]
     };
     this.runFunc = this.runFunc.bind(this);
