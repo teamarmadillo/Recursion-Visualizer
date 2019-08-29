@@ -11,7 +11,13 @@ class App extends Component {
     super(props);
     this.state = {
       treeData: {},
-      callStackData: {}
+      callStackData: [
+        { name: 'fib', parent: null, arg: 3, result: 2 },
+        { name: 'fib', parent: 3, arg: 2, result: 1 },
+        { name: 'fib', parent: 2, arg: 1, result: 1 },
+        { name: 'fib', parent: 2, arg: 0, result: 0 },
+        { name: 'fib', parent: 3, arg: 1, result: 1 }
+      ]
     };
     this.runFunc = this.runFunc.bind(this);
   }
@@ -73,7 +79,7 @@ class App extends Component {
     return (
       <div id={'container'}>
         <TitleBar />
-        <CallStackVisualizer />
+        <CallStackVisualizer calls={this.state.callStackData} />
         <TreeVisualizer data={this.state.stateFromServer} />
         <Editor runFunc={this.runFunc} />
       </div>
