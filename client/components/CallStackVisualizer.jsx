@@ -15,7 +15,7 @@ class CallStackVisualizer extends Component {
 
     return (
       <div id='stack-container'>
-        <h2>Total Calls</h2>
+        <h2>{`Total Calls: ${callsArr.length}`}</h2>
         {callsArr}
       </div>
     );
