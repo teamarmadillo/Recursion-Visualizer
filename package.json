@@ -2,9 +2,9 @@
   "name": "recursion-visualizer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
-    "start": "NODE_ENV=production nodemon server/server.js",
+    "start": "NODE_ENV=development nodemon server/server.js",
     "build": "webpack",
     "dev": "NODE_ENV=development webpack-dev-server --open"
   },
@@ -27,7 +27,8 @@
     "react": "^16.9.0",
     "react-ace": "^7.0.2",
     "react-ace-editor": "0.0.3",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-tree-graph": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
