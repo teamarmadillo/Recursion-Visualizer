@@ -10,64 +10,64 @@ class App extends Component {
     super(props);
     this.state = {
       treeData: {
-        name: 'factorial(4) Result = 55296',
-        children: [
-          {
-            name: 'factorial(3) Result = 24',
-            children: [
-              {
-                name: 'factorial(2) Result = 2',
-                children: [
-                  {
-                    name: 'factorial(1) Result = 1'
-                  },
-                  {
-                    name: 'factorial(0) Result = 0'
-                  },
-                  {
-                    name: 'factorial(-1) Result = -1'
-                  }
-                ]
-              },
-              {
-                name: 'factorial(1) Result = 1'
-              },
-              {
-                name: 'factorial(0) Result = 0'
-              }
-            ]
-          },
-          {
-            name: 'factorial(2) Result = 2',
-            children: [
-              {
-                name: 'factorial(1) Result = 1'
-              },
-              {
-                name: 'factorial(0) Result = 0'
-              },
-              {
-                name: 'factorial(-1) Result = -1'
-              }
-            ]
-          },
-          {
-            name: 'factorial(1) Result = 1'
-          }
-        ]
+        // name: 'factorial(4) Result = 55296',
+        // children: [
+        //   {
+        //     name: 'factorial(3) Result = 24',
+        //     children: [
+        //       {
+        //         name: 'factorial(2) Result = 2',
+        //         children: [
+        //           {
+        //             name: 'factorial(1) Result = 1'
+        //           },
+        //           {
+        //             name: 'factorial(0) Result = 0'
+        //           },
+        //           {
+        //             name: 'factorial(-1) Result = -1'
+        //           }
+        //         ]
+        //       },
+        //       {
+        //         name: 'factorial(1) Result = 1'
+        //       },
+        //       {
+        //         name: 'factorial(0) Result = 0'
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     name: 'factorial(2) Result = 2',
+        //     children: [
+        //       {
+        //         name: 'factorial(1) Result = 1'
+        //       },
+        //       {
+        //         name: 'factorial(0) Result = 0'
+        //       },
+        //       {
+        //         name: 'factorial(-1) Result = -1'
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     name: 'factorial(1) Result = 1'
+        //   }
+        // ]
       },
       // to test mock state, uncomment objs
       callStackData: [
-        { name: 'fib', parent: null, arg: 3, result: 2 },
-        { name: 'fib', parent: 3, arg: 2, result: 1 },
-        { name: 'fib', parent: 2, arg: 1, result: 1 },
-        { name: 'fib', parent: 2, arg: 0, result: 0 },
-        { name: 'fib', parent: 3, arg: 1, result: 1 },
-        { name: 'fib', parent: null, arg: 3, result: 2 },
-        { name: 'fib', parent: 3, arg: 2, result: 1 },
-        { name: 'fib', parent: 2, arg: 1, result: 1 },
-        { name: 'fib', parent: 2, arg: 0, result: 0 },
-        { name: 'fib', parent: 3, arg: 1, result: 1 }
+        // { name: 'fib', parent: null, arg: 3, result: 2 },
+        // { name: 'fib', parent: 3, arg: 2, result: 1 },
+        // { name: 'fib', parent: 2, arg: 1, result: 1 },
+        // { name: 'fib', parent: 2, arg: 0, result: 0 },
+        // { name: 'fib', parent: 3, arg: 1, result: 1 },
+        // { name: 'fib', parent: null, arg: 3, result: 2 },
+        // { name: 'fib', parent: 3, arg: 2, result: 1 },
+        // { name: 'fib', parent: 2, arg: 1, result: 1 },
+        // { name: 'fib', parent: 2, arg: 0, result: 0 },
+        // { name: 'fib', parent: 3, arg: 1, result: 1 }
       ]
     };
     this.runFunc = this.runFunc.bind(this);
@@ -106,7 +106,7 @@ class App extends Component {
     }
 
     //     //Updates state with userInput
-    this.setState({ userInput: userInput });
+    // this.setState({ userInput: userInput });
     fetch('/run', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
@@ -114,9 +114,11 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        const newState = JSON.parse(JSON.stringify(App.state));
-        newState.stateFromServer = response;
-        console.log(newState);
+        // const newState = JSON.parse(JSON.stringify(App.state));
+        console.log("response", response);
+        this.setState(response)
+        // console.log(newState);
+        console.log(this.state);
       })
       .catch(error => console.log(error));
     //Clears form

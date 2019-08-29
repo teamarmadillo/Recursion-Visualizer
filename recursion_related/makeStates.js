@@ -12,6 +12,7 @@ const MakeStates = {
             return bc;
         });
 
+        console.log(arg);
         if (hitsBaseCase) {
             this.recursiveStates.push({name, parent, arg, result: arg});
             return;

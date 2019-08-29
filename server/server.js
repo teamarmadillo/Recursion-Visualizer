@@ -18,22 +18,23 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
 }
 
-// app.post(
-//   '/run',
-//   parserController.convertToAST,
-//   parserController.parseArgsAndBaseCases,
-//   parserController.createState,
-//   parserController.convertToRecursiveCallsTree,
-//   (req, res) => {
-//     console.log('from server, req body: ', req.body.userInput);
+app.post(
+  '/run',
+  parserController.convertToAST,
+  parserController.parseArgsAndBaseCases,
+  parserController.createState,
+  parserController.convertToRecursiveCallsTree,
+  (req, res) => {
+    console.log('from server, req body: ', req.body.userInput);
+    console.log("This is what's sent back", {treeData: res.locals.config, callStackData: res.locals.recursiveStates})
+    res.status(200).send({treeData: res.locals.config, callStackData: res.locals.recursiveStates})
+  }
+);
 
-//   }
-// );
-
-app.post('/run', (req, res) => {
-  console.log('from server, req body: ', req.body);
-  res.json({hi: 'meh'});
-});
+// app.post('/run', (req, res) => {
+//   console.log('from server, req body: ', req.body);
+//   res.json({hi: 'meh'});
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}...`);

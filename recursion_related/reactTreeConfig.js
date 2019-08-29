@@ -9,6 +9,7 @@ ReactTreeConfig.preOrderSplit = (recursiveCallbackArray, numCalls) => {
 
     let counter = 0;
     for (let i = 0; i < recursiveCallbackArray.length; i++) {
+        console.log("preOrderSplitArray:", preOrderSplitArray[counter]);
         if (recursiveCallbackArray[i].parent == root.arg && preOrderSplitArray[counter].length) { counter++; }
         preOrderSplitArray[counter].push(recursiveCallbackArray[i]);
     }
@@ -18,6 +19,7 @@ ReactTreeConfig.preOrderSplit = (recursiveCallbackArray, numCalls) => {
 
 
 ReactTreeConfig.NodeStructMaker = (recursiveCallbackArray, numCalls) => {
+    console.log("top recursiveCall",recursiveCallbackArray)
     let {name, result, arg} = recursiveCallbackArray[0];
     if (result == arg && recursiveCallbackArray.length === 1) {
         return {
@@ -25,7 +27,9 @@ ReactTreeConfig.NodeStructMaker = (recursiveCallbackArray, numCalls) => {
         }
     }
     else {
-        const splitArray = ReactTreeConfig.preOrderSplit(recursiveCallbackArray, numCalls);
+        // console.log("recursiveCallback",recursiveCallbackArray);
+        let splitArray = ReactTreeConfig.preOrderSplit(recursiveCallbackArray, numCalls);
+        console.log("splitArray",splitArray);
         let childrenArray =[];
         for (let i = 0; i < numCalls; i++) {
             childrenArray.push(ReactTreeConfig.NodeStructMaker(splitArray[i], numCalls))
