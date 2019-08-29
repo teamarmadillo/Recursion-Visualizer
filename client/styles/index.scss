@@ -1,101 +1,167 @@
-body{
+body {
   display: flex;
   align-content: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #eee;
+  color: rgb(43, 43, 43);
   justify-content: center;
 }
 
-#container{
-  display: grid;
-  grid-template-columns: repeat(10, 10%);
-  grid-template-rows: repeat(20, 5%);
-  min-height: 700px;
-  max-width: 800px;
+.treeVisualizer {
+  height: 400px;
+  width: 400px;
+  background-color: black;
 }
 
-#title-container{
-    height: 100%;
-    grid-column-start: 1;
-    grid-column-end: span 10;
-    grid-row-start: 1;
-    grid-row-end: span 2;
+#container {
+  display: grid;
+  grid-template-columns: repeat(15, 10%);
+  grid-template-rows: repeat(20, 5%);
+  min-height: 700px;
+  max-width: 80vw;
+}
 
-    h1{
-      text-align: center;
-      font-size: 20px;
-    }
+#title-container {
+  height: 100%;
+  margin-top: 3vh;
+  font-size: 1.5vw;
+  grid-column-start: 1;
+  grid-column-end: span 10;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 
-    p{
-      text-align: center;
-    }
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 3vw;
   }
 
-  #stack-container{
-    grid-column-start: 1;
-    grid-column-end: span 4;
-    grid-row-start: 2;
-    grid-row-end: span 13;
-    border: 1px solid black;
-    overflow-y: auto;
-    h3{
-      margin-left: 5%;
-      font-size: 16px;
-    }
+  p {
+    text-align: center;
+    font-size: 1.5vw;
   }
+}
 
-#tree-container{
-  grid-column-start: 5;
-  grid-column-end: span 6;
-  grid-row-start: 2;
-  grid-row-end: span 13;
-  border: 1px solid black;
+#stack-container {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 3;
+  grid-row-end: span 9;
+  // border: 1px solid black;
   overflow-y: auto;
-  h3{
+  h3 {
+    margin-left: 5%;
+    // font-size: 16px;
+  }
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.callstack-frame {
+  margin: 0.2rem;
+  padding: 0.5rem 1rem;
+  max-width: 50%;
+  font-size: 1rem;
+  border: 1px solid rgb(160, 160, 160);
+  text-align: center;
+}
+
+.totalCallsHeader {
+  color: #2593b8;
+}
+
+#tree-container {
+  grid-column-start: 3;
+  grid-column-end: span 10;
+  grid-row-start: 4;
+  grid-row-end: span 13;
+  // border: 1px solid black;
+  overflow-y: auto;
+  h3 {
     margin-left: 5%;
     font-size: 16px;
   }
 }
 
-#editor-container{
-  grid-column-start: 1;
-  grid-column-end: span 10;
+#editor-container {
+  grid-column-start: 3;
+  grid-column-end: span 6;
   grid-row-start: 15;
+  justify-content: center;
+  margin-top: 20px;
   grid-row-end: span 6;
-  border: 1px solid black;
+  border: 1px solid #2593b8;
 
-  #ace-editor{
+  #ace-editor {
     width: 60%;
     height: 100%;
     overflow: auto;
     float: left;
   }
 
-  #button-container{
+  #button-container {
     width: 40%;
     float: right;
 
-    p{
+    p {
       margin: 10% 5% 10% 5%;
     }
 
-    button{
+    button {
       font-size: 14px;
       font-weight: 700;
       padding: 10px;
       border-radius: 3px;
     }
 
-    #run{
-      float:right;
-      margin-right: 5%
-    }
-    #clear{
+    #run {
       float: left;
+      background-color: #2593b8;
+      font-weight: bolder;
+      width: 100px;
+      cursor: pointer;
+      color: white;
       margin-left: 5%;
+    }
+
+    #run:hover {
+      background-color: rgb(21, 108, 136);
+    }
+
+    #clear {
+      float: right;
+      cursor: pointer;
+      background-color: white;
+      margin-right: 5%;
+    }
+
+    #clear:hover {
+      background-color: rgb(208, 208, 208);
     }
   }
 }
 
+// node tree styles
 
+.node circle {
+  fill: #2593b8;
+  stroke: #2593b8;
+  stroke-width: 1.5px;
+}
 
+.node text {
+  font-size: 15px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #444;
+  fill: #444;
+}
 
+.node {
+  cursor: pointer;
+}
 
+path.link {
+  fill: none;
+  stroke: #2593b8;
+  stroke-width: 1.5px;
+}

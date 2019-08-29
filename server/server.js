@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 app.use(urlencodedParser);
 
 app.get('/', (req, res, next) => {
-  res.sendFile(path.resolve(__dirname, '../index.html'));
+  console.log('test');
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 if (process.env.NODE_ENV === 'production') {
