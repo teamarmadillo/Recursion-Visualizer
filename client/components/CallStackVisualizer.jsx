@@ -1,5 +1,5 @@
-import React from "react";
-import { Component } from "react";
+import React from 'react';
+import { Component } from 'react';
 
 class CallStackVisualizer extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class CallStackVisualizer extends Component {
   render() {
     return (
       <div id='stack-container'>
-        <h3>Call Stack</h3>
+        <h3>Total Calls</h3>
       </div>
     );
   }
